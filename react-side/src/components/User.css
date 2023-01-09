@@ -1,0 +1,10 @@
+.d-flex {
+  width: 60%;
+  justify-content: center;
+  margin: 50px;
+  margin-left: 290px;
+}
+
+.btn {
+  width: 180px;
+}

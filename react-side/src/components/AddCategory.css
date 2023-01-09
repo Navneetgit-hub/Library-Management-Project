@@ -1,0 +1,53 @@
+#category-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-div {
+  position: relative;
+  top: 150px;
+}
+
+#add-book-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 20px;
+}
+
+#add-book {
+  position: relative;
+  top: 40px;
+  left: 5px;
+}
+
+#add-book input,
+select {
+  width: 250px;
+  height: 40px;
+}
+
+#add-btn {
+  width: 250px;
+  height: 40px;
+}
+
+#book-list {
+  position: relative;
+  top: 130px;
+}
+
+#borrow-book-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 100px;
+  width: 50%;
+  margin: auto;
+}
