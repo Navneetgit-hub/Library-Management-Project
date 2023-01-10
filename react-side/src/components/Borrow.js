@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { ToastContainer, toast } from "react-toastify";
 import "./Book.css";
+import UserNav from "./UserNav";
 
 function Borrow() {
+  const navigate = useNavigate();
   const location = useParams();
   const bookname = location.book;
   const [date, setDate] = useState();
@@ -48,18 +50,16 @@ function Borrow() {
               borrowDate: date,
             })
             .then((res) => {
-              console.log("Inside then");
-              console.log(res.data.borrowed)
               if (res.data.borrowed == "True") {
-                console.log("Inside if");
                 showToastMessage();
+                navigate("/user");
               } else {
-                console.log("Inside else");
                 showToastMessage1();
+                navigate("/user");
               }
             })
         );
-    }else{
+    } else {
       showToastMessage2();
     }
   };
@@ -75,15 +75,18 @@ function Borrow() {
   }, []);
   return (
     <div>
+       <UserNav/>
       <div id="borrow-book-list">
         {books &&
           books.length > 0 &&
           books.map((obj, index) => (
+            
             <Card style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Title>{obj.bname}</Card.Title>
                 <Card.Text>
-                  <img className="profile-pic" src={obj.bimage} />
+                {console.log(obj)}
+                  <img className="profile-pic" src={obj.bimage}  />
                 </Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush">
@@ -102,12 +105,13 @@ function Borrow() {
                   <input
                     onChange={(e) => handle(e)}
                     type="date"
+                    min="2023-01-11"
                     required
                   ></input>
                 </ListGroup.Item>
               </ListGroup>
               <Card.Body>
-                <button className="btn btn-primary" onClick={submit}>
+                <button className="btn btn-danger " onClick={submit}>
                   Borrow
                 </button>
               </Card.Body>

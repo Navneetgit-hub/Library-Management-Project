@@ -24,18 +24,23 @@ function UserNav() {
                 </Offcanvas.Title>
               </Offcanvas.Header>
 
-              <Offcanvas.Body>
+              <Offcanvas.Body className="menubar">
                 <Nav className="justify-content-start flex-grow-1 pe-3">
-                  <Nav.Link href="/userRequested">Requested book</Nav.Link>
+                <Nav.Link href="/user" className="menu">
+                    Home
+                  </Nav.Link>
+                  <Nav.Link href="/userRequested"  className="menu">Requested book</Nav.Link>
 
-                  <Nav.Link href="/userIssued">
+                  <Nav.Link href="/userIssued" className="menu">
                     Issued book
                   </Nav.Link>
+
+                  
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
 
-            <Navbar.Brand href="/signup">Logout</Navbar.Brand>
+            <Navbar.Brand href="/">Logout</Navbar.Brand>
           </Container>
         </Navbar>
       ))}

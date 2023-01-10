@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AdminNav from "./AdminNav";
 import './Book.css'
+import './AddCategory.css';
 
 function AddBook() {
   const [Category, setCategory] = useState([]);
@@ -86,23 +87,30 @@ function AddBook() {
   return (
     <>
       <AdminNav />
-      <div id="category-book">
-        <div id="category-div">
-          <h1>Add Category</h1>
-          <div id="add-div">
+      <div className = "category-book">
+
+        <div className="category-div">
+
+          <h2>Add Category</h2>
+
+          <br></br>
+          <div className="form-div">
 
             <form onSubmit={(e) => submitCategory(e)}>
               <input
                 onChange={(e) => {
                   handleCategory(e);
-                }} type="text" id="category" placeholder="Add Category" required
-              /><br /><br />
-              <button type='submit' className="btn btn-primary">Add</button>
+                }} type="text" id="category" className = "form-control" placeholder="Add Category" required
+              /><br />
+              <button type='submit' className="btn btn-danger btn-md">Add</button>
             </form>
+
           </div>
         </div>
-        <div id="add-book-div">
-          <h1>Add Book</h1>
+
+        <div className = "addBook-div">
+          <h2>Add Book</h2>
+          <br></br>
           <div id="add-book">
             <form onSubmit={(e) => submit(e)}>
               <input
@@ -111,25 +119,29 @@ function AddBook() {
                 }}
                 type="text"
                 id="bname"
+                className = "form-control"
                 placeholder="Enter Book Name"
                 required
               />
               <br />
-              <br />
+              
               <input
                 onChange={(e) => {
                   handle(e);
                 }}
                 type="text"
                 id="author"
+                className = "form-control"
                 placeholder="Enter Author Name"
                 required
               />
               <br />
-              <br />
               <select onChange={(e) => {
                 handle(e);
-              }} id="category">
+              }} id="category" className = "form-control">
+                <option selected="true" disabled="disabled">
+              Select Category
+            </option>
                 {Category &&
                   Category.length > 0 &&
                   Category.map((obj, index) => (
@@ -137,38 +149,43 @@ function AddBook() {
                   ))}
               </select>
               <br />
-              <br />
+
               <input
                 onChange={(e) => {
                   handle(e);
                 }}
                 type="text"
                 id="price"
+                className = "form-control"
                 placeholder="Enter Price"
                 required
               />
               <br />
-              <br />
+          
               <input
                 onChange={(e) => {
                   handle(e);
                 }}
                 type="text"
                 id="quantity"
+                className = "form-control"
                 placeholder="Enter Quantity"
                 required
               />
               <br />
+              
+              <input onChange={(e) => image(e)} id="image" className = "form-control" type="file"></input>
               <br />
-              <input onChange={(e) => image(e)} id="image" type="file"></input>
               <br />
-              <br />
-              <button id="add-btn" className="btn btn-primary" type="submit">
+              <button id="add-btn" className="btn btn-danger" type="submit">
                 Add
               </button>
             </form>
+            
           </div>
+
         </div>
+
       </div>
     </>
   );

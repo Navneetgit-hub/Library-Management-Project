@@ -86,7 +86,7 @@ const Signin = () => {
           } else {
             console.log("ui else");
             showToastMessage();
-            navigate("/login");
+            navigate("/");
           }
         });
     } else {
@@ -146,6 +146,8 @@ const Signin = () => {
             onChange={(e) => handle(e)}
             type="date"
             id="dob"
+            min="1979-12-31"
+            max="2010-12-31"
             // placeholder="dd-mm-yyyy"
             className="form-control"
             required
@@ -154,6 +156,7 @@ const Signin = () => {
           <input
             onChange={(e) => handle(e)}
             type="radio"
+            id="gender"
             name="gender"
             value="Male"
           />
@@ -163,7 +166,8 @@ const Signin = () => {
           <input
             onChange={(e) => handle(e)}
             type="radio"
-            namge="gender"
+            id="gender"
+            name="gender"
             value="Female"
           />
           &nbsp;&nbsp;

@@ -150,6 +150,7 @@ app.get("/getCategory", (req, res) => {
 // api to add books bt the admin
 app.post("/add-books", (req, res) => {
   const user = req.body;
+  console.log("body :",user)
   const bname = user.bname;
   const category = user.category;
   const author = user.author;
@@ -159,14 +160,14 @@ app.post("/add-books", (req, res) => {
 
   try { 
     console.log("inside try");
-    let insertQuery = `insert into books(bname,category,author,price,quantity,bimage) values('${bname}','${category}','${author}','${price}','${quantity}','${bimage}')`;
+    let insertQuery = `insert into books(bname,category,author,price,quantity,bimage, intQuantity) values('${bname}','${category}','${author}','${price}','${quantity}','${bimage}','${quantity}')`;
     pool.query(insertQuery, (err, result) => {
       if (!err) {
         console.log("insertion was successful in books table");
         res.send("insertion successful in books");
         console.log("inside if");
       } else {
-        console.log("not inserted in books");
+        console.log(err.message);
         res.send("not inserted in books");
       }
     });
@@ -342,6 +343,7 @@ app.get("/requestedBooks", (req, res) => {
               b.bname,
               b.author,
               b.category,
+              b.quantity,
               s.firstname,
               s.lastname,
               s.email

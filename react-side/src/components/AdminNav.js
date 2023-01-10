@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import './AddCategory.css';
 
 
 function AdminNav() {
@@ -19,16 +20,16 @@ function AdminNav() {
               placement="start"
             >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}  className="menu">
+                  Menu
                 </Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
+              <Offcanvas.Body className="menubar">
                 <Nav className="justify-content-start flex-grow-1 pe-3">
-                  <Nav.Link href="/addBook">Add Book</Nav.Link>
-                  <Nav.Link href="/adminbooklist">Books List</Nav.Link>
-                  <Nav.Link href="/userdetails">User Details</Nav.Link>
-                  <Nav.Link href="/charts">Charts</Nav.Link>
+                  <Nav.Link href="/addBook" className="menu">Add Book</Nav.Link>
+                  <Nav.Link href="/adminbooklist" className="menu">Books List</Nav.Link>
+                  <Nav.Link href="/userdetails" className="menu">User Details</Nav.Link>
+                  <Nav.Link href="/charts" className="menu">Charts</Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

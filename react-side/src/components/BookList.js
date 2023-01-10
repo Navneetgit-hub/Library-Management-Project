@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import UserNav from './UserNav';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Book.css';
+import User from './User';
 
 
 function BookList() {
@@ -21,12 +23,14 @@ function BookList() {
   }, [])
 
   return (
+    <>
+   
     <div id="book-list">
           {books &&
         books.length > 0 &&
         books.map((obj, index) => (
             <div id="book">
-                <Link to={`/borrow/${obj.bname}`}><img className="profile-pic" src={obj.bimage} /><br /></Link>
+                <Link to={`/borrow/${obj.bname}`}><img className="profile-pic" src={obj.bimage} height="200px" width="150px"/><br /></Link>
                 <div id="btext">
                 <label>Book: </label>&nbsp;<span>{obj.bname}</span><br />
                 <label>Author: </label>&nbsp;<span>{obj.author}</span><br />
@@ -35,6 +39,8 @@ function BookList() {
               </div>   
               ))}
     </div>
+    </>
+    
   );
 }
 

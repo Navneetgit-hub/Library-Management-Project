@@ -36,7 +36,7 @@ function UserRequested() {
               <tbody>
                 <tr key={obj.bid}>
                   <td>
-                    {console.log(book)}
+                    {console.log(obj)}
                     <img
                       width="100px"
                       height="100px"

@@ -4,7 +4,7 @@ import AdminNav from './AdminNav';
 import axios from 'axios';
 import './Book.css';
 import Table from "react-bootstrap/Table";
-import './Book.css';
+
 
 
 function BookDetails() {
@@ -37,16 +37,17 @@ function BookDetails() {
                     <h1>
                         {bookname}
                     </h1><br />
-                    <div>
+                    <div id="book">
                         {books &&
                             books.length > 0 &&
                             books.map((obj, index) => (
                                 <>
-                                    <img className="profile-pic" src={obj.bimage} /><br /><br />
+                                    <img className="profile-pic" src={obj.bimage} height= "200px" width="150px" /><br /><br />
                                     <div id="book-text">
-                                        <label><b>Author Name:&nbsp;&nbsp;</b> {obj.author}</label><br />
-                                        <label><b>Category:&nbsp;&nbsp; </b> {obj.Category}</label><br />
-                                        <label><b>Available: &nbsp;&nbsp;</b> {obj.quantity}</label><br />
+                                        {console.log(obj)}
+                                        <label>Book: </label>&nbsp;<span>{obj.bname}</span><br />
+                                       <label>Author: </label>&nbsp;<span>{obj.author}</span><br />
+                                       <label>Category: </label>&nbsp;<span>{obj.category}</span><br />
                                     </div>
                                 </>
                             ))}
@@ -63,7 +64,7 @@ function BookDetails() {
                                 <th>User Name</th>
                                 <th>Request Date</th>
                                 <th>Return Date</th>
-                                <th>Retured</th>
+                                <th>Returned</th>
                             </tr>
                         </thead>
                         {Bookdetails &&
@@ -78,6 +79,7 @@ function BookDetails() {
                                         </td>
                                         <td>{obj.requestdate.split("T")[0]}</td>
                                         <td>{obj.returndate.split("T")[0]}</td>
+                                        <td>{}</td>
                                     </tr>
                                 </tbody>
                             ))}

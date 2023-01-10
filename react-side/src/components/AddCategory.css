@@ -19,11 +19,11 @@
   top: 20px;
 }
 
-#add-book {
+/* #add-book {
   position: relative;
   top: 40px;
   left: 5px;
-}
+} */
 
 #add-book input,
 select {
@@ -31,23 +31,47 @@ select {
   height: 40px;
 }
 
-#add-btn {
+/* #add-btn {
   width: 250px;
   height: 40px;
-}
+} */
 
-#book-list {
+/* #book-list {
   position: relative;
   top: 130px;
-}
+} */
 
 #borrow-book-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  top: 100px;
+  /* position: relative;
+  top: 60px; */
   width: 50%;
   margin: auto;
+}
+.category-book{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn {
+  width: 100px;
+}
+
+.category-div h2,.addBook-div h2{
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.menu{
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 25px;
+  /* background-color: beige; */
+}
+
+.menubar{
+  background-color: #dedcd9ca;
 }
