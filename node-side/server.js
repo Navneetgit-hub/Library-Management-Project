@@ -478,7 +478,7 @@ app.post("/search", (req, res)=>{
 // API to get book details and show it on Admin Side.
 app.post("/book-details", (req, res)=>{
   let bookname = req.body.name;
-  // console.log(bookname)
+  // console.log("bookname = ", bookname)
   let searchbook = `select bid from books where bname='${bookname}'`;
   pool.query(searchbook, (err, result)=>{
     if(!err){
@@ -501,7 +501,7 @@ app.post("/book-details", (req, res)=>{
       books b
       INNER JOIN request rq ON b.bid = rq.bid
       INNER JOIN signup s ON rq.userid = s.id
-      where b.bid='${bookid}' and status='Accepted';`
+      where b.bid='${bookid}' and (status='Accepted' or status='Returned');`
       pool.query(selectdetails, (err, result1)=>{
         if(!err){
           res.send(result1.rows)
@@ -510,7 +510,6 @@ app.post("/book-details", (req, res)=>{
         }
       })
     }else{
-
     }
   })
 })
@@ -525,4 +524,33 @@ app.get("/issue-count", (req, res)=>{
       console.log(err.message)
     }
   })
+})
+
+app.post("/return", (req, res)=>{
+  const bookid = req.body.bookid;
+  console.log("book id : ", bookid);
+  const rid = req.body.req;
+  try {
+    let updateQuantity = `Update books set quantity=quantity+1 where bid='${bookid}'`;
+    pool.query(updateQuantity, (err, result) => {
+      if (!err) {
+        // res.send("Quantity updated sucessfully")
+        console.log("quantity increased")
+      } else {
+        console.log("increase",err.message);
+      }
+    });
+    let updatestatus = `Update request set status='Returned' where rid='${rid}'`;
+    pool.query(updatestatus, (err, result) => {
+      if (!err) {
+        res.send({
+          accepted: "True"
+        });
+      } else {
+        console.log(err.message);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
 })

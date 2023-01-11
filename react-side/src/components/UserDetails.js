@@ -30,6 +30,10 @@ export const UserDetails = () => {
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
+                            <th>Birth Date</th>
+                            <th>Gender</th>
+                            <th>Course</th>
+                            <th>Branch</th>
                         </tr>
                     </thead>
                     {Request &&
@@ -44,6 +48,10 @@ export const UserDetails = () => {
                                       <b>{obj.lastname}</b> 
                                     </td>
                                     <td>{obj.email}</td>
+                                    <td>{obj.dob}</td>
+                                    <td>{obj.gender}</td>
+                                    <td>{obj.course}</td>
+                                    <td>{obj.branch}</td>
                                 </tr>
                             </tbody>
                         ))}

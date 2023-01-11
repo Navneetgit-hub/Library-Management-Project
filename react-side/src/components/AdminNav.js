@@ -26,6 +26,7 @@ function AdminNav() {
               </Offcanvas.Header>
               <Offcanvas.Body className="menubar">
                 <Nav className="justify-content-start flex-grow-1 pe-3">
+                <Nav.Link href="/admin" className="menu">Home</Nav.Link>
                   <Nav.Link href="/addBook" className="menu">Add Book</Nav.Link>
                   <Nav.Link href="/adminbooklist" className="menu">Books List</Nav.Link>
                   <Nav.Link href="/userdetails" className="menu">User Details</Nav.Link>

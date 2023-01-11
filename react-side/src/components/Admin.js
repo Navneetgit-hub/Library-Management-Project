@@ -2,11 +2,13 @@ import React from "react";
 import AdminNav from "./AdminNav";
 import Table from "react-bootstrap/Table";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 
 function Admin() {
+  const navigate = useNavigate();
   const [Request, setRequest] = useState([]);
   const url = "http://localhost:5000/issueBooks";
   const url1 = "http://localhost:5000/accept";
@@ -39,6 +41,7 @@ function Admin() {
       .then((res) => {
         if(res.data.accepted == "True"){
           showToastMessage();
+          navigate("/admin")
         }
       });
   };
@@ -54,6 +57,7 @@ function Admin() {
       .then((res) => {
         if(res.data.rejected=="True"){
           showToastMessage1()
+          navigate("/admin")
         }
       });
   };

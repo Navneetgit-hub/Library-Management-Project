@@ -4,23 +4,20 @@ import AdminNav from './AdminNav';
 import axios from 'axios';
 import './Book.css';
 import Table from "react-bootstrap/Table";
-
-
-
 function BookDetails() {
     const location = useParams();
     const bookname = location.book;
+    var returnstatus;
     const [Bookdetails, setBookdetails] = useState([]);
     const url1 = "http://localhost:5000/book-details";
     const [books, getBooks] = useState([])
     const url = "http://localhost:5000/borrow";
-
     axios.post(url1, {
         name: bookname,
     }).then(res => {
         setBookdetails(res.data)
+        console.log(res.data)
     })
-
     useEffect(() => {
         axios.post(url, {
             bname: bookname
@@ -28,7 +25,6 @@ function BookDetails() {
             getBooks(res.data)
         })
     }, [])
-
     return (
         <div>
             <AdminNav />
@@ -44,7 +40,6 @@ function BookDetails() {
                                 <>
                                     <img className="profile-pic" src={obj.bimage} height= "200px" width="150px" /><br /><br />
                                     <div id="book-text">
-                                        {console.log(obj)}
                                         <label>Book: </label>&nbsp;<span>{obj.bname}</span><br />
                                        <label>Author: </label>&nbsp;<span>{obj.author}</span><br />
                                        <label>Category: </label>&nbsp;<span>{obj.category}</span><br />
@@ -53,7 +48,6 @@ function BookDetails() {
                             ))}
                     </div>
                 </div>
-
                 <div>
                     <h1>
                         Borrowed by
@@ -71,6 +65,7 @@ function BookDetails() {
                             Bookdetails.length > 0 &&
                             Bookdetails.map((obj, index) => (
                                 <tbody>
+                                    {console.log(obj)}
                                     <tr key={obj.bid}>
                                         <td>
                                             {obj.firstname}&nbsp;{obj.lastname}
@@ -79,7 +74,7 @@ function BookDetails() {
                                         </td>
                                         <td>{obj.requestdate.split("T")[0]}</td>
                                         <td>{obj.returndate.split("T")[0]}</td>
-                                        <td>{}</td>
+                                        {(obj.status==='Returned')?(<td>Returned</td>):(<td>Not Yet Returned</td>)}
                                     </tr>
                                 </tbody>
                             ))}
@@ -89,5 +84,4 @@ function BookDetails() {
         </div>
     )
 }
-
 export default BookDetails
