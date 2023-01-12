@@ -64,7 +64,7 @@ function Search() {
           searchedBook.length > 0 &&
           searchedBook.map((obj, index) => (
             <div id="book">
-              <Link to={`/borrow/${obj.bname}`}><img className="profile-pic" src={obj.bimage} /><br /></Link>
+              <Link to={`/borrow/${obj.bname}`}><img className="profile-pic" src={obj.bimage} height="200px" width="150px"/><br /></Link>
               <div id="btext">  
                 <label>Book: </label>&nbsp;<span>{obj.bname}</span><br />
                 <label>Author: </label>&nbsp;<span>{obj.author}</span><br />

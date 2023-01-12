@@ -117,7 +117,7 @@ function Charts() {
   var options2;
   options2 = {
     title: {
-      text: "Book Quantity Change",
+      text: "Changes in Book Quantity",
       align: "center",
     },
 
@@ -127,14 +127,12 @@ function Charts() {
 
     yAxis: {
       title: {
-        text: "Number of Employees",
+        text: "Number of Books",
       },
     },
 
     xAxis: {
-      accessibility: {
-        rangeDescription: "Range: 2010 to 2020",
-      },
+      
     },
 
     legend: {

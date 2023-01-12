@@ -457,10 +457,20 @@ app.get('/users',(req,res)=>{
 
 // API to search books by its name or author name.
 app.post("/search", (req, res)=>{
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   var expression = req.body.text;
+  var upexp = expression.toUpperCase();
+  console.log("upper",upexp)
+  var lexp = expression.toLowerCase();
+  console.log("lower",lexp)
+  var capexp = capitalizeFirstLetter(expression)
+  console.log("cap",capexp)
   if(expression!=""){
+    capexp = "%"+capexp+"%";
     expression = "%"+expression+"%";
-    let searchBooks =  `select * from books where bname like '${expression}' or author like '${expression}';`
+    let searchBooks =  `select * from books where bname like '${capexp}' or author like '${expression}' or bname like '${expression}';`
     pool.query(searchBooks,(err,result) =>{
       if(!err){
         res.send(result.rows);
@@ -544,7 +554,7 @@ app.post("/return", (req, res)=>{
     pool.query(updatestatus, (err, result) => {
       if (!err) {
         res.send({
-          accepted: "True"
+          returned: "True"
         });
       } else {
         console.log(err.message);

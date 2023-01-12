@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-
 function Admin() {
   const navigate = useNavigate();
   const [Request, setRequest] = useState([]);
@@ -41,7 +40,7 @@ function Admin() {
       .then((res) => {
         if(res.data.accepted == "True"){
           showToastMessage();
-          navigate("/admin")
+          window.location.reload();
         }
       });
   };
@@ -57,7 +56,7 @@ function Admin() {
       .then((res) => {
         if(res.data.rejected=="True"){
           showToastMessage1()
-          navigate("/admin")
+          window.location.reload();
         }
       });
   };
